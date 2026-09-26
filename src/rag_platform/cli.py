@@ -5,6 +5,7 @@ from pathlib import Path
 from .evaluate import evaluate
 from .experiment import run_experiment, write_experiment
 from .ingest import ingest_directory
+from .security_evaluate import evaluate_security
 
 
 def main() -> None:
@@ -18,12 +19,16 @@ def main() -> None:
     experiment.add_argument("dataset", type=Path)
     experiment.add_argument("--repeats", type=int, default=5)
     experiment.add_argument("--output", type=Path, default=Path("evaluation/results/local_experiment.json"))
+    security_evaluation = commands.add_parser("security-evaluate")
+    security_evaluation.add_argument("dataset", type=Path)
     args = parser.parse_args()
     if args.command == "ingest":
         result = ingest_directory(args.source)
     elif args.command == "experiment":
         result = run_experiment(args.dataset, args.repeats)
         write_experiment(result, args.output)
+    elif args.command == "security-evaluate":
+        result = evaluate_security(args.dataset)
     else:
         result = evaluate(args.dataset)
     print(json.dumps(result, indent=2))

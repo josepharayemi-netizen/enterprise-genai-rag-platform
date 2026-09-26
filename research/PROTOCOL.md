@@ -45,6 +45,9 @@ These are preregistered targets, not measured claims. Report all results, includ
 - Its SHA-256 digest is `cca9e7f04561c3fbbd5703c6e3f8114385931f262252a0df86457997980e363f`.
 - The candidate set was constructed during development and is not independently annotated. It must not be described as an external benchmark.
 - Failures observed in this set are preserved. A future independently prepared set is required to evaluate any revised controls.
+- `evaluation/security_robustness_v2.json` is a separate 36-case post-baseline robustness set: 24 adversarial inputs and 12 benign controls.
+- Version 2 security results must be reported separately from the original frozen 40-case baseline because the implementation changed.
+- The v2 set was also authored within the study and is diagnostic, not an independent security benchmark.
 
 ## Primary metrics
 
@@ -77,5 +80,6 @@ pip install -r requirements-dev.txt
 python -m src.rag_platform.cli ingest examples/knowledge
 python -m src.rag_platform.cli evaluate evaluation/research_benchmark.json
 python -m src.rag_platform.cli experiment evaluation/candidate_test_set.json --repeats 5 --output evaluation/results/local_candidate_test.json
+python -m src.rag_platform.cli security-evaluate evaluation/security_robustness_v2.json
 pytest -q
 ```

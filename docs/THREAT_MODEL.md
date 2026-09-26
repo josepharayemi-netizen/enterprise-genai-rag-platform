@@ -2,7 +2,8 @@
 
 | Threat | Control and evidence |
 |---|---|
-| Prompt injection | Pattern gate, untrusted-content boundary and adversarial test |
+| Direct prompt injection | Unicode normalization, literal patterns, behavioral indicators, untrusted-content boundary and adversarial/benign-control tests |
+| Indirect prompt injection | Approved-source boundary and review; automated document-level detection remains future work |
 | Cross-tenant retrieval | Tenant filter applied before ranking and isolation test |
 | Sensitive-data leakage | PII redaction before indexing and no prompt-content metrics labels |
 | Hallucination | Minimum retrieval threshold, citations, abstention and golden-set gate |

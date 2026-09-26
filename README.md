@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/ci.yml)
 [![Security](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml/badge.svg)](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml)
+[![CITATION.cff](https://img.shields.io/badge/cite-CITATION.cff-blue)](CITATION.cff)
 
 A secure, observable and governed Retrieval-Augmented Generation platform. It runs locally without paid APIs and provides production deployment paths for Amazon Bedrock and Azure OpenAI.
 
@@ -58,6 +59,12 @@ python -m src.rag_platform.cli evaluate evaluation/golden_set.json
 ```
 
 The evaluation gate measures retrieval hit rate, citation coverage, abstention and injection blocking. Cloud promotion should occur only when the checked-in thresholds pass.
+
+## Research and citation
+
+The repository includes a [research protocol](research/PROTOCOL.md), an expanded [research benchmark](evaluation/research_benchmark.json), a working [manuscript](paper/manuscript.md), and machine-readable citation metadata in [`CITATION.cff`](CITATION.cff). The manuscript does not claim unmeasured results: tables marked `TBD` must be populated from committed experiment output.
+
+For a citable release, create a version tag and archive the GitHub release with Zenodo. Replace the DOI placeholder in the manuscript only after Zenodo issues the DOI.
 
 ## Cloud providers
 

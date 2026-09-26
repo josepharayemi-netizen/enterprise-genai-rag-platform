@@ -1,0 +1,29 @@
+{
+  "title": "Enterprise Multi-Cloud GenAI RAG Platform",
+  "description": "A reproducible reference implementation and evaluation framework for secure, governed retrieval-augmented generation across local, AWS and Microsoft Azure deployment paths.",
+  "creators": [
+    {
+      "name": "Arayemi, Joseph",
+      "affiliation": "GIIT Africa"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "keywords": [
+    "retrieval-augmented generation",
+    "responsible AI",
+    "AI security",
+    "multi-cloud",
+    "AWS",
+    "Microsoft Azure",
+    "MLOps"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
+

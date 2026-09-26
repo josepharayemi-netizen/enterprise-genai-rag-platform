@@ -2,7 +2,8 @@
 
 **Joseph Arayemi**  
 GIIT Africa, Lagos, Nigeria  
-*Corresponding-author email and ORCID to be added before submission*
+Corresponding author: yemi@giitafrica.com  
+ORCID: [0009-0007-0776-7238](https://orcid.org/0009-0007-0776-7238)
 
 ## Abstract
 
@@ -83,4 +84,3 @@ Generative AI tools assisted with early software and manuscript drafting. The na
 ## References
 
 To be completed from verified primary literature and official standards before public submission.
-

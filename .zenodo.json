@@ -4,7 +4,8 @@
   "creators": [
     {
       "name": "Arayemi, Joseph",
-      "affiliation": "GIIT Africa"
+      "affiliation": "GIIT Africa",
+      "orcid": "0009-0007-0776-7238"
     }
   ],
   "license": "MIT",
@@ -26,4 +27,3 @@
     }
   ]
 }
-

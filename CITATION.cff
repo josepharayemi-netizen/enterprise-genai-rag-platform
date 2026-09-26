@@ -6,6 +6,8 @@ authors:
   - family-names: Arayemi
     given-names: Joseph
     affiliation: GIIT Africa
+    email: yemi@giitafrica.com
+    orcid: "https://orcid.org/0009-0007-0776-7238"
 repository-code: "https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform"
 url: "https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform"
 license: MIT
@@ -19,4 +21,3 @@ keywords:
   - AWS
   - Microsoft Azure
   - MLOps
-

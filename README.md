@@ -63,7 +63,7 @@ The evaluation gate measures retrieval hit rate, citation coverage, abstention a
 
 ## Research and citation
 
-The repository includes a [research protocol](research/PROTOCOL.md), a 20-case development benchmark, a frozen 40-case [candidate test set](evaluation/candidate_test_set.json), committed [local experiment results](evaluation/results/local_candidate_test.json), a working [manuscript](paper/manuscript.md), and machine-readable citation metadata in [`CITATION.cff`](CITATION.cff). The candidate set is synthetic and not independently annotated; it is not presented as an external benchmark. Tables marked `TBD` remain unmeasured.
+The repository includes a [research protocol](research/PROTOCOL.md), a 20-case development benchmark, a frozen 40-case [candidate test set](evaluation/candidate_test_set.json), committed [local experiment results](evaluation/results/local_candidate_test.json), a working [manuscript](paper/manuscript.md), verified [BibTeX references](paper/references.bib), and machine-readable citation metadata in [`CITATION.cff`](CITATION.cff). The candidate set is synthetic and not independently annotated; it is not presented as an external benchmark. Tables marked `TBD` remain unmeasured.
 
 For a citable release, create a version tag and archive the GitHub release with Zenodo. Replace the DOI placeholder in the manuscript only after Zenodo issues the DOI.
 

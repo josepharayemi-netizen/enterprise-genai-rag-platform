@@ -27,7 +27,25 @@ The principal contributions are:
 
 ## 2. Background and related work
 
-This section will synthesize peer-reviewed work on RAG evaluation, hallucination and grounding, prompt injection, privacy-preserving language systems, responsible AI frameworks and multi-cloud MLOps. The final review will prioritize primary research and current standards. Every claim will be supported by a verified citation; placeholder or generated references will not be used.
+### 2.1 Retrieval-augmented generation
+
+Lewis et al. introduced RAG as a framework combining parametric generation with non-parametric retrieved memory for knowledge-intensive language tasks [1]. The approach provides a foundation for answers that can be conditioned on external evidence rather than relying exclusively on model parameters. Subsequent work has expanded RAG into a broader family of naive, advanced and modular architectures, with retrieval, augmentation and generation each presenting distinct design and evaluation choices [2]. The present study narrows that broad design space to a transparent enterprise baseline in which evidence selection, abstention and provenance can be inspected without a paid model endpoint.
+
+### 2.2 Evaluation of RAG systems
+
+RAG evaluation cannot be reduced to a single accuracy score because retrieval quality, contextual relevance, answer faithfulness and answer relevance can fail independently. RAGAS proposes reference-free measures for evaluating several of these dimensions [3]. ARES similarly evaluates context relevance, answer faithfulness and answer relevance, combining synthetic training data with a smaller quantity of human annotation and prediction-powered inference [4]. These approaches motivate the separation of categories and metrics in this study. However, the current local baseline is extractive rather than generative, so its initial experiment reports deterministic task success, citation coverage, abstention, security behavior and latency instead of using an LLM as an evaluator. Human and model-based assessment should be added when the AWS and Azure generative paths are activated.
+
+### 2.3 Prompt injection and RAG security
+
+Retrieval introduces an important trust-boundary problem: external content can contain instructions as well as data. Greshake et al. demonstrated that indirect prompt injection can exploit this ambiguity in LLM-integrated applications and can lead to manipulation, data theft and unsafe tool behavior [5]. OWASP consequently treats prompt injection as a leading risk for LLM and generative-AI applications, and notes that RAG and fine-tuning do not eliminate the underlying vulnerability [6]. The present platform's pattern-based detector is therefore treated as a measurable baseline control, not a complete defense. The candidate test result, in which three of eight adversarial formulations bypassed literal patterns, is consistent with the need for layered controls and adversarial evaluation.
+
+### 2.4 Responsible AI governance
+
+The NIST AI Risk Management Framework organizes AI risk work around the Govern, Map, Measure and Manage functions and emphasizes lifecycle-wide, context-sensitive risk management [7]. Its Generative AI Profile extends that framework with considerations specific to generative systems [8]. The repository operationalizes a subset of those principles through documented ownership, model and prompt versioning, a threat model, evaluation gates, human-review boundaries, auditability and release controls. This implementation does not claim full conformity or certification; the mapping is a design aid whose completeness must be assessed in a real deployment context.
+
+### 2.5 Research gap
+
+Prior work establishes sophisticated RAG methods, multidimensional evaluation and serious prompt-injection risks. A practical gap remains between those strands for organizations that need a locally reproducible security and governance baseline before funding managed cloud inference. This study addresses that narrower gap with one inspectable artifact spanning local evaluation, responsible-AI documentation, DevSecOps controls and parallel AWS/Azure reference paths. Its novelty claim is architectural integration and transparent experimental packaging, not a new foundation model, embedding algorithm or universal security defense.
 
 ## 3. System architecture
 
@@ -85,4 +103,18 @@ Generative AI tools assisted with early software and manuscript drafting. The na
 
 ## References
 
-To be completed from verified primary literature and official standards before public submission.
+[1] P. Lewis, E. Perez, A. Piktus, F. Petroni, V. Karpukhin, N. Goyal, H. Küttler, M. Lewis, W.-t. Yih, T. Rocktäschel, S. Riedel, and D. Kiela, “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” in *Advances in Neural Information Processing Systems 33*, 2020, pp. 9459–9474. Available: https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html
+
+[2] Y. Gao, Y. Xiong, X. Gao, K. Jia, J. Pan, Y. Bi, Y. Dai, J. Sun, M. Wang, and H. Wang, “Retrieval-Augmented Generation for Large Language Models: A Survey,” arXiv:2312.10997, 2023. doi: 10.48550/arXiv.2312.10997.
+
+[3] S. Es, J. James, L. Espinosa-Anke, and S. Schockaert, “RAGAs: Automated Evaluation of Retrieval Augmented Generation,” in *Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations*, 2024. doi: 10.18653/v1/2024.eacl-demo.16.
+
+[4] J. Saad-Falcon, O. Khattab, C. Potts, and M. Zaharia, “ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems,” in *Proceedings of NAACL-HLT 2024*, pp. 338–354, 2024. doi: 10.18653/v1/2024.naacl-long.20.
+
+[5] K. Greshake, S. Abdelnabi, S. Mishra, C. Endres, T. Holz, and M. Fritz, “Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection,” in *Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security*, 2023. doi: 10.1145/3605764.3623985.
+
+[6] OWASP Gen AI Security Project, “LLM01:2025 Prompt Injection,” 2025. Available: https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+
+[7] National Institute of Standards and Technology, *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*, NIST AI 100-1, 2023. doi: 10.6028/NIST.AI.100-1.
+
+[8] National Institute of Standards and Technology, *Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile*, NIST AI 600-1, 2024. doi: 10.6028/NIST.AI.600-1.

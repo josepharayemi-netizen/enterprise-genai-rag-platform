@@ -7,7 +7,7 @@ ORCID: [0009-0007-0776-7238](https://orcid.org/0009-0007-0776-7238)
 
 ## Abstract
 
-Retrieval-augmented generation (RAG) can improve the factual grounding of generative artificial intelligence systems, but production adoption also introduces privacy, prompt-injection, access-control and operational-governance risks. These challenges are especially consequential for resource-constrained organizations that require auditable controls without dependence on costly managed services during early development. This paper presents a reproducible, multi-cloud reference architecture for secure and responsible enterprise RAG. The implementation combines approved-source ingestion, deterministic local retrieval, tenant-aware filtering, personally identifiable information redaction, prompt-injection detection, evidence-based abstention, source citations, versioned evaluation and deployment controls. Equivalent production paths are specified for Amazon Web Services and Microsoft Azure. We define an experimental protocol covering retrieval, grounding, attack blocking, privacy protection, abstention, latency and cost. The released artifact includes source code, infrastructure definitions, a synthetic benchmark and governance documentation. Quantitative results will be inserted after the frozen benchmark and ablation experiments are executed. The work is intended as a transparent baseline for researchers and practitioners evaluating trustworthy RAG systems in organizations with constrained infrastructure and governance capacity.
+Retrieval-augmented generation (RAG) can improve the factual grounding of generative artificial intelligence systems, but production adoption also introduces privacy, prompt-injection, access-control and operational-governance risks. These challenges are especially consequential for resource-constrained organizations that require auditable controls without dependence on costly managed services during early development. This paper presents a reproducible, multi-cloud reference architecture for secure and responsible enterprise RAG. The implementation combines approved-source ingestion, deterministic local retrieval, tenant-aware filtering, personally identifiable information redaction, prompt-injection detection, evidence-based abstention, source citations, versioned evaluation and deployment controls. Equivalent production paths are specified for Amazon Web Services and Microsoft Azure. On a frozen 40-case synthetic candidate test set, the local configuration achieved 34/40 end-to-end successes (0.85) with deterministic outcomes across five repetitions. It achieved complete success on the tested privacy-redaction, tenant-isolation, unsupported-question and validation categories, but blocked only 5/8 prompt-injection formulations (0.625). The results expose the limits of pattern-based defenses and support using the artifact as a transparent baseline rather than a claim of comprehensive AI security.
 
 **Keywords:** retrieval-augmented generation; responsible AI; AI security; prompt injection; multi-cloud; MLOps; AWS; Microsoft Azure
 
@@ -43,15 +43,15 @@ Governance artifacts include a model card, threat model, risk controls, a human-
 
 ## 5. Methodology
 
-The experiment follows the preregistered protocol in `research/PROTOCOL.md`. Primary evaluation uses a frozen, versioned test set with answerable, unsupported, injection, privacy, validation and tenant-isolation cases. The full guarded system is compared with ablations that remove individual controls. Deterministic experiments are repeated to verify stability. Cloud experiments record configuration, model version, region, measured latency and contemporaneous pricing assumptions.
+The experiment follows the protocol in `research/PROTOCOL.md`. The 20-case development benchmark was used during implementation and is reported separately from the frozen 40-case synthetic candidate test set. The candidate set contains answerable, unsupported, injection, privacy, validation and tenant-isolation cases and is identified by SHA-256 digest. The local experiment was repeated five times to assess deterministic stability. The set was constructed as part of this study and was not independently annotated; it is therefore not presented as an external benchmark. Planned cloud experiments will record configuration, model version, region, measured latency and contemporaneous pricing assumptions.
 
 ## 6. Results
 
-**This section intentionally contains no invented results.** Populate the following table only from committed machine-readable experiment output.
+Results below are taken from `evaluation/results/local_candidate_test.json`. Outcomes were identical across five repetitions. Latency values are from the first recorded run and describe the lightweight local implementation in the recorded execution environment; they are not cloud latency estimates.
 
 | Configuration | Cases | End-to-end success | Citation coverage | Injection block rate | PII redaction recall | Abstention accuracy | Median latency | p95 latency |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Local, full controls | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Local, full controls | 40 | 34/40 (0.85) | 20/21 (0.9524) | 5/8 (0.625) | 6/6 (1.00) | 6/6 (1.00) | 0.1322 ms | 0.1808 ms |
 | Local, no injection detector | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Local, no PII redaction | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | AWS managed path | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -59,11 +59,13 @@ The experiment follows the preregistered protocol in `research/PROTOCOL.md`. Pri
 
 ## 7. Discussion
 
-The final discussion will interpret whether the measured evidence supports each hypothesis, compare operational trade-offs and identify failures exposed by the ablations. Particular attention will be given to whether simple safeguards provide meaningful baseline protection without overstating their coverage.
+The candidate test result supports H1 for overall end-to-end success, H3 for the explicitly supported PII formats and H4 for unsupported-question abstention. It does not support H2: the pattern-based detector blocked only five of eight prompt-injection formulations. Three semantically adversarial prompts that avoided the detector's literal patterns were not blocked. This is evidence that regular-expression safeguards can provide a basic control but should not be treated as a comprehensive prompt-injection defense.
+
+The answerable category achieved 12/15 successes. Together with citation coverage of 20/21 expected-citation cases, these failures illustrate the recall limitations of deterministic lexical retrieval. Conversely, all six unsupported questions correctly triggered abstention, suggesting that the strengthened lexical-evidence condition reduced false-positive grounding on this dataset. These observations are specific to the synthetic corpus and cannot establish performance on natural enterprise documents.
 
 ## 8. Limitations and threats to validity
 
-The present corpus and benchmark are synthetic and small. Keyword-hashed embeddings do not represent modern semantic retrievers, the attack set cannot cover adversarial creativity, and pattern-based PII redaction has limited entity coverage. Managed cloud model behavior may change by model version and region. Results therefore cannot be generalized to clinical, legal, financial, employment or other consequential applications. A submission-ready study should expand the held-out benchmark, include independent annotation and report uncertainty.
+The corpus and benchmarks are synthetic and small. The candidate set was authored during the study, was not independently annotated and may reflect the designers' assumptions. Keyword-hashed embeddings do not represent modern semantic retrievers, the eight-case attack set cannot cover adversarial creativity, and pattern-based PII redaction has limited entity coverage. The sub-millisecond latency measurements reflect an in-process extractive baseline, not a networked generative model. Managed cloud behavior may change by model version and region. Results cannot be generalized to clinical, legal, financial, employment or other consequential applications. A submission-ready study should use a larger independently prepared test set, include multiple annotators, calculate inter-rater agreement and report statistical uncertainty.
 
 ## 9. Conclusion
 

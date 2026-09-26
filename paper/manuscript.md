@@ -63,6 +63,8 @@ Governance artifacts include a model card, threat model, risk controls, a human-
 
 The experiment follows the protocol in `research/PROTOCOL.md`. The 20-case development benchmark was used during implementation and is reported separately from the frozen 40-case synthetic candidate test set. The candidate set contains answerable, unsupported, injection, privacy, validation and tenant-isolation cases and is identified by SHA-256 digest. The local experiment was repeated five times to assess deterministic stability. The set was constructed as part of this study and was not independently annotated; it is therefore not presented as an external benchmark. Planned cloud experiments will record configuration, model version, region, measured latency and contemporaneous pricing assumptions.
 
+To prepare independent validation, the artifact also includes a blinded annotation-pack generator and an agreement calculator. The pack contains prompts, system responses and citation counts but excludes expected labels and category metadata. At least two reviewers who did not create the benchmark or implement the controls will independently rate behavioral correctness, evidential support and response safety using `yes`, `no` or `uncertain`. Raw agreement and Cohen's kappa will be calculated before adjudication. No independent human-review result is claimed in the present version because external ratings have not yet been collected.
+
 ## 6. Results
 
 Results below are taken from `evaluation/results/local_candidate_test.json`. Outcomes were identical across five repetitions. Latency values are from the first recorded run and describe the lightweight local implementation in the recorded execution environment; they are not cloud latency estimates.

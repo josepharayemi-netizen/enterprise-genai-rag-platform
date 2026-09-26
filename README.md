@@ -68,6 +68,8 @@ The repository includes a [research protocol](research/PROTOCOL.md), a 20-case d
 
 Post-baseline security hardening is evaluated separately with 24 adversarial and 12 benign-control cases in [`security_robustness_v2.json`](evaluation/security_robustness_v2.json). The committed result reports both attack recall and benign specificity and preserves all failures.
 
+Independent reviewers can use the blinded [human-annotation workflow](evaluation/annotation/ANNOTATOR_GUIDE.md). The pack excludes expected labels, and the agreement command reports raw agreement and Cohen's kappa before adjudication.
+
 For a citable release, create a version tag and archive the GitHub release with Zenodo. Replace the DOI placeholder in the manuscript only after Zenodo issues the DOI.
 
 ## Cloud providers

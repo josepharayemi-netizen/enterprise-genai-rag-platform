@@ -71,6 +71,10 @@ These are preregistered targets, not measured claims. Report all results, includ
 - Record negative and unexpected findings.
 - State that the benchmark covers only the documented threat patterns and is not proof of universal security.
 
+## Independent human review
+
+Before journal submission, recruit at least two reviewers who did not create the system or benchmark. Generate blinded packs using the workflow in `evaluation/annotation/ANNOTATOR_GUIDE.md`, calculate agreement before adjudication and report both raw agreement and Cohen's kappa. Do not describe internally authored synthetic labels as independent human validation.
+
 ## Reproduction
 
 ```bash
@@ -81,5 +85,7 @@ python -m src.rag_platform.cli ingest examples/knowledge
 python -m src.rag_platform.cli evaluate evaluation/research_benchmark.json
 python -m src.rag_platform.cli experiment evaluation/candidate_test_set.json --repeats 5 --output evaluation/results/local_candidate_test.json
 python -m src.rag_platform.cli security-evaluate evaluation/security_robustness_v2.json
+python -m src.rag_platform.cli annotation-pack evaluation/candidate_test_set.json --output reviewer_pack.csv
+python -m src.rag_platform.cli annotation-agreement reviewer_a.csv reviewer_b.csv
 pytest -q
 ```

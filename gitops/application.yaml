@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: {name: enterprise-genai-rag, namespace: argocd}
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform.git
+    targetRevision: main
+    path: deploy/helm
+  destination: {server: https://kubernetes.default.svc, namespace: enterprise-rag}
+  syncPolicy:
+    automated: {prune: true, selfHeal: true}
+    syncOptions: [CreateNamespace=true]

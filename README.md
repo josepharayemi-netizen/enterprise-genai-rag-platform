@@ -57,6 +57,7 @@ Local mode is deliberately deterministic: it extracts an answer from retrieved e
 ```bash
 python -m src.rag_platform.cli evaluate evaluation/golden_set.json
 python -m src.rag_platform.cli experiment evaluation/candidate_test_set.json --repeats 5 --output evaluation/results/local_candidate_test.json
+python -m src.rag_platform.cli security-evaluate evaluation/security_robustness_v2.json
 ```
 
 The evaluation gate measures retrieval hit rate, citation coverage, abstention and injection blocking. Cloud promotion should occur only when the checked-in thresholds pass.
@@ -64,6 +65,8 @@ The evaluation gate measures retrieval hit rate, citation coverage, abstention a
 ## Research and citation
 
 The repository includes a [research protocol](research/PROTOCOL.md), a 20-case development benchmark, a frozen 40-case [candidate test set](evaluation/candidate_test_set.json), committed [local experiment results](evaluation/results/local_candidate_test.json), a working [manuscript](paper/manuscript.md), verified [BibTeX references](paper/references.bib), and machine-readable citation metadata in [`CITATION.cff`](CITATION.cff). The candidate set is synthetic and not independently annotated; it is not presented as an external benchmark. Tables marked `TBD` remain unmeasured.
+
+Post-baseline security hardening is evaluated separately with 24 adversarial and 12 benign-control cases in [`security_robustness_v2.json`](evaluation/security_robustness_v2.json). The committed result reports both attack recall and benign specificity and preserves all failures.
 
 For a citable release, create a version tag and archive the GitHub release with Zenodo. Replace the DOI placeholder in the manuscript only after Zenodo issues the DOI.
 

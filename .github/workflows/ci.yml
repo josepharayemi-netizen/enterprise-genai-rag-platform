@@ -14,6 +14,7 @@ jobs:
       - run: python -m src.rag_platform.cli ingest examples/knowledge
       - run: python -m src.rag_platform.cli evaluate evaluation/golden_set.json
       - run: python -m src.rag_platform.cli experiment evaluation/candidate_test_set.json --repeats 2 --output /tmp/local-experiment.json
+      - run: python -m src.rag_platform.cli security-evaluate evaluation/security_robustness_v2.json
       - run: ruff check src tests
       - run: pytest
       - run: docker build -t enterprise-rag:test .

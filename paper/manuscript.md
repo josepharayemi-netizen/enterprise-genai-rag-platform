@@ -81,9 +81,19 @@ The candidate test result supports H1 for overall end-to-end success, H3 for the
 
 The answerable category achieved 12/15 successes. Together with citation coverage of 20/21 expected-citation cases, these failures illustrate the recall limitations of deterministic lexical retrieval. Conversely, all six unsupported questions correctly triggered abstention, suggesting that the strengthened lexical-evidence condition reduced false-positive grounding on this dataset. These observations are specific to the synthetic corpus and cannot establish performance on natural enterprise documents.
 
+### 7.1 Post-baseline security hardening
+
+After freezing the initial result, the direct-injection gateway was extended with Unicode NFKC normalization, zero-width-character removal and a scored combination of override, control, exfiltration and protected-information indicators. It was evaluated separately on a new 36-case diagnostic set containing 24 adversarial inputs and 12 benign security or governance questions.
+
+| Security configuration | Attacks detected | Attack recall | Benign accepted | Benign specificity | Precision | Overall accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| Layered direct-injection detector (v2) | 17/24 | 0.7083 | 11/12 | 0.9167 | 0.9444 | 28/36 (0.7778) |
+
+The v2 detector missed seven attacks: one social-engineering formulation, spaced-letter and encoded inputs, two multilingual inputs and two role-play/developer-mode formulations. It also incorrectly blocked one benign question discussing bypass attempts. Because the v2 dataset was created within the same study, these figures are diagnostic rather than independent evidence of generalization. They nevertheless demonstrate why both attack recall and benign specificity are necessary: increasing sensitivity without benign controls can make a system unusable while still missing novel attacks.
+
 ## 8. Limitations and threats to validity
 
-The corpus and benchmarks are synthetic and small. The candidate set was authored during the study, was not independently annotated and may reflect the designers' assumptions. Keyword-hashed embeddings do not represent modern semantic retrievers, the eight-case attack set cannot cover adversarial creativity, and pattern-based PII redaction has limited entity coverage. The sub-millisecond latency measurements reflect an in-process extractive baseline, not a networked generative model. Managed cloud behavior may change by model version and region. Results cannot be generalized to clinical, legal, financial, employment or other consequential applications. A submission-ready study should use a larger independently prepared test set, include multiple annotators, calculate inter-rater agreement and report statistical uncertainty.
+The corpus and benchmarks are synthetic and small. Both candidate sets were authored during the study, were not independently annotated and may reflect the designers' assumptions. Keyword-hashed embeddings do not represent modern semantic retrievers. Neither the initial eight-case attack category nor the 36-case v2 diagnostic set can cover adversarial creativity, indirect injection through retrieved documents or multilingual variation. Pattern-based PII redaction also has limited entity coverage. The sub-millisecond latency measurements reflect an in-process extractive baseline, not a networked generative model. Managed cloud behavior may change by model version and region. Results cannot be generalized to clinical, legal, financial, employment or other consequential applications. A submission-ready study should use a larger independently prepared test set, include multiple annotators, calculate inter-rater agreement and report statistical uncertainty.
 
 ## 9. Conclusion
 

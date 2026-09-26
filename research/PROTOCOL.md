@@ -36,7 +36,15 @@ These are preregistered targets, not measured claims. Report all results, includ
    - no PII redaction;
    - no relevance threshold/abstention;
    - no tenant filter.
-6. Do not tune on the final test set. Expand data into development and test partitions before making research claims.
+6. Do not tune on the frozen candidate test set after observing its results. Any subsequent control improvements must be evaluated on a newly versioned, independently annotated test set.
+
+## Dataset status
+
+- `evaluation/research_benchmark.json` is the 20-case development benchmark and may be used for debugging.
+- `evaluation/candidate_test_set.json` is the frozen 40-case candidate test set first executed on 2026-09-26.
+- Its SHA-256 digest is `cca9e7f04561c3fbbd5703c6e3f8114385931f262252a0df86457997980e363f`.
+- The candidate set was constructed during development and is not independently annotated. It must not be described as an external benchmark.
+- Failures observed in this set are preserved. A future independently prepared set is required to evaluate any revised controls.
 
 ## Primary metrics
 
@@ -68,6 +76,6 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 python -m src.rag_platform.cli ingest examples/knowledge
 python -m src.rag_platform.cli evaluate evaluation/research_benchmark.json
+python -m src.rag_platform.cli experiment evaluation/candidate_test_set.json --repeats 5 --output evaluation/results/local_candidate_test.json
 pytest -q
 ```
-

@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from src.rag_platform.evaluate import evaluate
+from src.rag_platform.experiment import run_experiment
 from src.rag_platform.index import VectorIndex, chunk_document, embed
 from src.rag_platform.ingest import ingest_directory
 from src.rag_platform.models import Document
@@ -58,3 +59,12 @@ def test_research_benchmark_reports_categories(tmp_path):
     assert "injection" in metrics["categories"]
     assert "privacy" in metrics["categories"]
     assert len(metrics["details"]) == metrics["cases"]
+
+
+def test_experiment_is_repeatable(tmp_path):
+    index_path = tmp_path / "index.json"
+    ingest_directory(Path("examples/knowledge"), index_path)
+    result = run_experiment(Path("evaluation/golden_set.json"), repeats=2, index_path=index_path)
+    assert result["deterministic_outcomes"]
+    assert len(result["dataset_sha256"]) == 64
+    assert len(result["runs"]) == 2

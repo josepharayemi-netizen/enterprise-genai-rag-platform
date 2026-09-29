@@ -12,7 +12,7 @@ repository-code: "https://github.com/josepharayemi-netizen/enterprise-genai-rag-
 url: "https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform"
 license: MIT
 version: 1.0.0
-date-released: 2026-09-26
+date-released: 2026-09-29
 keywords:
   - retrieval-augmented generation
   - responsible AI

@@ -3,6 +3,7 @@
 [![CI](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/ci.yml)
 [![Security](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml/badge.svg)](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml)
 [![CITATION.cff](https://img.shields.io/badge/cite-CITATION.cff-blue)](CITATION.cff)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23045245.svg)](https://doi.org/10.5281/zenodo.23045245)
 
 A secure, observable and governed Retrieval-Augmented Generation platform. It runs locally without paid APIs and provides production deployment paths for Amazon Bedrock and Azure OpenAI.
 
@@ -70,7 +71,13 @@ Post-baseline security hardening is evaluated separately with 24 adversarial and
 
 Independent reviewers can use the blinded [human-annotation workflow](evaluation/annotation/ANNOTATOR_GUIDE.md). The pack excludes expected labels, and the agreement command reports raw agreement and Cohen's kappa before adjudication.
 
-For a citable release, create a version tag and archive the GitHub release with Zenodo. Replace the DOI placeholder in the manuscript only after Zenodo issues the DOI.
+Version 1.0.0 is permanently archived on Zenodo: [https://doi.org/10.5281/zenodo.23045245](https://doi.org/10.5281/zenodo.23045245).
+
+### Cite this software
+
+> Arayemi, J. (2026). *Enterprise Multi-Cloud GenAI RAG Platform* (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23045245
+
+Machine-readable citation metadata is available in [`CITATION.cff`](CITATION.cff).
 
 ## Cloud providers
 

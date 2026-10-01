@@ -4,6 +4,7 @@
 [![Security](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml/badge.svg)](https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform/actions/workflows/security.yml)
 [![CITATION.cff](https://img.shields.io/badge/cite-CITATION.cff-blue)](CITATION.cff)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23045245.svg)](https://doi.org/10.5281/zenodo.23045245)
+[![Technical Report DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23048250.svg)](https://doi.org/10.5281/zenodo.23048250)
 
 A secure, observable and governed Retrieval-Augmented Generation platform. It runs locally without paid APIs and provides production deployment paths for Amazon Bedrock and Azure OpenAI.
 
@@ -72,12 +73,18 @@ Post-baseline security hardening is evaluated separately with 24 adversarial and
 Independent reviewers can use the blinded [human-annotation workflow](evaluation/annotation/ANNOTATOR_GUIDE.md). The pack excludes expected labels, and the agreement command reports raw agreement and Cohen's kappa before adjudication.
 
 Version 1.0.0 is permanently archived on Zenodo: [https://doi.org/10.5281/zenodo.23045245](https://doi.org/10.5281/zenodo.23045245).
+The accompanying peer-readable technical report is available at
+[https://doi.org/10.5281/zenodo.23048250](https://doi.org/10.5281/zenodo.23048250).
 
-### Cite this software
+### Cite the software
 
 > Arayemi, J. (2026). *Enterprise Multi-Cloud GenAI RAG Platform* (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23045245
 
 Machine-readable citation metadata is available in [`CITATION.cff`](CITATION.cff).
+
+### Cite the technical report
+
+> Arayemi, J. (2026). *Secure and Responsible Retrieval-Augmented Generation for Resource-Constrained Organizations: A Multi-Cloud Reference Architecture and Experimental Evaluation*. Zenodo. https://doi.org/10.5281/zenodo.23048250
 
 ## Cloud providers
 

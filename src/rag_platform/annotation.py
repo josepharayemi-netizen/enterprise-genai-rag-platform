@@ -72,7 +72,7 @@ def _cohen_kappa(left: list[str], right: list[str]) -> float | None:
     left_counts, right_counts = Counter(left), Counter(right)
     expected = sum((left_counts[label] / len(left)) * (right_counts[label] / len(right)) for label in ALLOWED_RATINGS)
     if expected == 1.0:
-        return 1.0 if observed == 1.0 else None
+        return None  # No marginal variation: kappa has a zero denominator.
     return round((observed - expected) / (1 - expected), 4)
 
 

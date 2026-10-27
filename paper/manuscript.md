@@ -71,7 +71,7 @@ Results below are taken from `evaluation/results/local_candidate_test.json`. Out
 
 | Configuration | Cases | End-to-end success | Citation coverage | Injection block rate | PII redaction recall | Abstention accuracy | Median latency | p95 latency |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Local, full controls | 40 | 34/40 (0.85) | 20/21 (0.9524) | 5/8 (0.625) | 6/6 (1.00) | 6/6 (1.00) | 0.1322 ms | 0.1808 ms |
+| Local, full controls | 40 | 34/40 (0.85) | 20/21 (0.9524) | 5/8 (0.625) | 6/6 (1.00) | 6/6 (1.00) | 0.1307 ms | 0.1901 ms |
 | Local, no injection detector | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Local, no PII redaction | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | AWS managed path | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -103,7 +103,7 @@ This work offers a transparent foundation for studying secure, governed RAG acro
 
 ## Data and software availability
 
-Source code, synthetic evaluation data, infrastructure definitions and reproduction instructions are available at `https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform`. A version-specific Zenodo DOI will be added after the `v1.0.0` release is archived.
+Source code, synthetic evaluation data, infrastructure definitions and reproduction instructions are available at `https://github.com/josepharayemi-netizen/enterprise-genai-rag-platform`. The archived software is available at https://doi.org/10.5281/zenodo.23045245 and the technical report at https://doi.org/10.5281/zenodo.23048250. Archive version relationships must be verified against Zenodo before submission.
 
 ## Ethics statement
 

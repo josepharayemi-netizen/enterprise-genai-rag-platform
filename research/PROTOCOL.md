@@ -23,7 +23,7 @@ Evaluate whether a lightweight, security- and governance-aware RAG pipeline can 
 - H3: It redacts 1.00 of the PII formats explicitly supported by the implementation.
 - H4: It abstains on at least 0.80 of questions for which no approved evidence exists.
 
-These are preregistered targets, not measured claims. Report all results, including failures.
+These are prespecified targets, not measured claims. No external prospective registration is asserted. Report all results, including failures.
 
 ## Experimental design
 

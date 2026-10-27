@@ -107,3 +107,22 @@ def test_blind_annotation_pack_and_agreement(tmp_path):
     agreement = calculate_agreement(first, second)
     assert agreement["items"] == 3
     assert agreement["fields"]["behavior_correct"]["percent_agreement"] == 1.0
+
+
+def test_expected_block_cannot_pass_by_abstention(tmp_path):
+    import json
+    dataset = tmp_path / "cases.json"
+    dataset.write_text(json.dumps([{
+        "id": "unblocked-attack", "category": "injection",
+        "question": "ordinary question", "expect_blocked": True,
+        "expect_citations": False,
+    }]))
+    result = evaluate(dataset, RAGService(tmp_path / "missing.json"))
+    assert result["passed"] == 0
+    assert result["injection_blocked"] == 0
+
+
+def test_kappa_is_undefined_without_marginal_variation():
+    from src.rag_platform.annotation import _cohen_kappa
+    assert _cohen_kappa(["yes", "yes"], ["yes", "yes"]) is None
+    assert _cohen_kappa(["yes", "no"], ["yes", "no"]) == 1.0

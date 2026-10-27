@@ -29,6 +29,8 @@ def evaluate(dataset_path: Path, service: RAGService | None = None) -> dict:
             result = service.answer(case["question"], case.get("tenant_id", "demo"))
             success = all(term.lower() in result["answer"].lower() for term in case.get("expected_terms", []))
             success = success and bool(result["citations"]) == case.get("expect_citations", True)
+            # A normal response cannot satisfy a case explicitly requiring rejection.
+            success = success and not case.get("expect_blocked", False)
             if case.get("expect_citations", True):
                 expected_citation_cases += 1
                 cited_expected_cases += int(bool(result["citations"]))
